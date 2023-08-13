@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+<div>
+    <label>tencent</label>
+    <select name="server" id="tencent">
+        <!-- <optgroup label="tencent"> -->
+            <option value="8978254362">3</option>
+            <option value="8977355565">2-jp</option>
+            <option value="8947457363">新建歌单</option>
+            <option value="8947443526">acg-bgm</option>
+            <option value="8947431919">acg</option>
+            <option value="8679320564">todo</option>
+            <option value="8567855033">游戏王bgm</option>
+            <option value="8564307422">0</option>
+            <option value="8562954125">西游记</option>
+            <option value="8562953620">象棋王</option>
+            <option value="8562949035">犬夜叉bgm</option>
+            <option value="8562948201">网球王子</option>
+            <option value="8562947426">瑶玲啊瑶玲</option>
+            <option value="8562947047">秦时明月</option>
+            <option value="8562944474">数码宝贝bgm</option>
+            <option value="8562943548">初音</option>
+            <option value="8562943081">罪恶王冠</option>
+            <option value="8562942373">白色相簿</option>
+            <option value="8562941832">数码宝贝</option>
+            <option value="8562941429">冰菓bgm</option>
+            <option value="8562940906">春物</option>
+            <option value="8562940277">春物bgm</option>
+            <option value="8562939800">白色相簿bgm</option>
+            <option value="8562937618">fate</option>
+            <option value="8562903975">done</option>
+            <option value="8562860981">lq</option>
+            <option value="8562857578">1-周杰伦</option>
+            <option value="8562856643">0-周杰伦</option>
+            <option value="7851843457">ogg</option>
+            <option value="7769771803">down-2015</option>
+            <option value="7769644279">恢复漫游</option>
+            <option value="7769643762">redmi note 3</option>
+            <option value="7769643380">mi note</option>
+
+            <option value="857253164">200首华语金曲，你一定在KTV点过这些歌</option>
+            <option value="3783755614">00后动画片主题曲——动画片又开始啦！</option>
+            <option value="7676597292">中二至上</option>
+            <option value="7322054355">2010-2015年流行歌合集</option>
+            <option value="7568193859">2012年流行歌曲</option>
+        <!-- </optgroup> -->
+    </select>
+
+    <label>netease</label>
+    <select name="server" id="netease">
+        <optgroup label="netease">
+            <option value="429352197">6Could喜欢的音乐</option>
+            <option value="7927195693">6Could的2022年度歌单</option>
+            <option value="7564116808">白色相簿</option>
+            <option value="7493400507">春物</option>
+            <option value="7175713240">6Could的2021年度歌单</option>
+            <option value="7136879436">A</option>
+            <option value="7115364454">done</option>
+            <option value="5012164063">todo</option>
+            <option value="5192140005">白色相簿2</option>
+            <option value="76558297">【Animenz】Animenz的动漫钢琴</option>
+            <option value="769632267">小米CEO雷军演唱会</option>
+            <option value="154396606">『90后』童年经典动画歌曲</option>
+            <option value="2226375840">90后流行歌曲</option>
+            <option value="2378405272">网易云荣格心理测试（曲目请看简介）</option>
+        </optgroup>
+    </select>
+</div>
+
+    <script>
+        // // 创建一个div元素
+        // var div = document.createElement("div");
+
+        // // 创建一个select元素
+        // var select = document.createElement("select");
+        // select.name = "server";
+        // select.id = "server";
+
+        // // 创建两个optgroup元素
+        // var optgroup1 = document.createElement("optgroup");
+        // optgroup1.label = "tencent";
+        // var optgroup2 = document.createElement("optgroup");
+        // optgroup2.label = "netease";
+
+        // // 创建两个option元素
+        // var option1 = document.createElement("option");
+        // option1.value = "8978254362";
+        // option1.textContent = "3";
+        // var option2 = document.createElement("option");
+        // option2.value = "429352197";
+        // option2.textContent = "6Could喜欢的音乐";
+
+        // // 将option元素添加到对应的optgroup元素中
+        // optgroup1.appendChild(option1);
+        // optgroup2.appendChild(option2);
+
+        // // 将optgroup元素添加到select元素中
+        // select.appendChild(optgroup1);
+        // select.appendChild(optgroup2);
+
+        // // 将select元素添加到div元素中
+        // div.appendChild(select);
+
+        // // 将div元素添加到文档中
+        // document.body.appendChild(div);
+
+        // // var select = document.querySelector('select');
+
+        var tencent = document.getElementById('tencent')
+        var netease = document.getElementById('netease')
+
+        function selectC(select) {
+            select.onchange = function(){
+                change(select.options[select.selectedIndex], select.id)
+            }
+        }
+
+        selectC(tencent)
+        selectC(netease)
+
+        function change(option, server) {
+            var group = option.parentNode;
+            console.log("Value: " + option.value);
+            console.log("Group: " + group.label);
+
+            // let server = group.label
+            let id = option.value
+            // let server = 'tencent'
+            // let id = '8562939800'
+            let meting = document.createElement('meting-js');
+            meting.setAttribute('server', server);
+            meting.setAttribute('type','playlist');
+            meting.setAttribute('id', id);
+            meting.setAttribute('fixed','true');
+            let div = document.querySelector('div');
+            let meting_pre = document.querySelector('meting-js');
+            if (meting_pre) {
+                div.removeChild(meting_pre);
+            }
+            div.appendChild(meting);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+<div>
+    <label>tencent</label>
+    <select name="server" id="tencent">
+        <% for(var i = 0; i < ten.length; i++) { %>
+        <option value="<%= ten[i].id %>"><%= ten[i].name %></option>
+        <% } %>
+    </select>
+
+    <label>netease</label>
+    <select name="server" id="netease">
+        <% for(var i = 0; i < net.length; i++) { %>
+        <option value="<%= net[i].id %>"><%= net[i].name %></option>
+        <% } %>
+    </select>
+</div>
+
+<script>
+    var tencent = document.getElementById('tencent')
+    var netease = document.getElementById('netease')
+
+    function selectC(select) {
+        select.onchange = function(){
+            change(select.options[select.selectedIndex], select.id)
+        }
+    }
+
+    selectC(tencent)
+    selectC(netease)
+
+    function change(option, server) {
+        console.log("Value: " + option.value);
+
+        let id = option.value
+
+        // let server = 'tencent'
+        // let id = '8562939800'
+        let meting = document.createElement('meting-js');
+        meting.setAttribute('server', server);
+        meting.setAttribute('type','playlist');
+        meting.setAttribute('id', id);
+        meting.setAttribute('fixed','true');
+        let div = document.querySelector('body');
+
+        let meting_pre = document.querySelector('meting-js');
+        if (meting_pre) {
+            div.removeChild(meting_pre);
+        }
+        div.appendChild(meting);
+    }
+</script>
